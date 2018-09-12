@@ -1,3 +1,8 @@
+:root
+{
+    --frame:3px;
+}
+
 body
 {
     margin:0;
@@ -23,117 +28,150 @@ section.background
     position:relative;
     box-sizing: border-box;
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    flex-basis: 420px;
     margin:auto;
     padding:auto;
     height:100vh;
     width:840px;
-    bottom:0;
-    
-    
+    bottom:0;    
 }
 
-section.background div
+.sceleton
 {
-    position:absolute;
-    display: flex;
+
+    display:flex;
     box-sizing: border-box;
-    margin:2px;
-    padding:3px;
-    bottom:0;
-    height:450px;;
-    width:420px;
-    color:red;
-    
-}
-section.background div::before
-{
-    content: "";
-    position: absolute;
-    width:420px;
-    height:450px;
-    bottom:0;
-    border-top: 10px solid darkgray;
-    border-right: 10px solid darkgray;
-    border-top-right-radius: 15px;
-    filter: drop-shadow(3px 2px 3px rgba(0,0,0,0.72));
-}
-section.background div:first-of-type::before
-{
-    z-index:3;
-}
-section.background div:nth-of-type(2)::before
-{
-    position: absolute;
-   height:450px;
-   z-index: 2;
-}
-section.background div:nth-of-type(3)::before
-{
-    position: absolute;
-    right:25px;
-    transform-origin: center;
-    transform:rotateY(180deg);
-    border-right:transparent;
-    filter: drop-shadow(-3px 2px 3px rgba(0,0,0,0.72));
-    z-index:1;
-}
-section.background div:nth-of-type(4)::before
-{
-    position: absolute;
-    right:25px;
-    height: 225px;
-    transform-origin: center;
-    transform:rotateY(180deg);
-    border-right:transparent;
-    filter: drop-shadow(-3px 2px 3px rgba(0,0,0,0.72));
-    z-index:1;
+    justify-content: center;
+    margin: 0;
+    padding: auto;
+    height: calc(100vh - 50%);
+    background: rgba(0,0,0,0.2);
 }
 
-section.background div:nth-of-type(2)
-{
-    bottom:450px;
-    
-}
-section.background div:nth-of-type(3)
-{
-    bottom:225px;
-    left:450px;
-}
-section.background div:nth-of-type(4)
-{
-   bottom:15px;
-    left:450px;
-    height:225px;
-}
 
-/*tabliczki*/
-section.background div span.info
-{
-    display:block;
-    position:relative;
-    padding:10px;
-    height:205px;
-    width:360px;
-    margin-top:10px;
-    background: deepskyblue;
-    border-radius:20px;
-   
-}
-/*Dla 2 tabliczek po lewej przsuwamy aby były na środku*/
-section.background div:first-child span.info,
-section.background div:nth-child(2) span.info
-{
-    left:20px;
-}
-
-section.background div span.info::before
+.sceleton::after
 {
     content:"";
+    position: relative;
+    box-sizing: border-box;
+    height:100%;
+    width:100%;
+    bottom:0;
+    border-right:var(--frame) solid black;
+    border-top:var(--frame) solid black;
+    border-top-right-radius: 10px;
+}
+.sceleton:first-child::after
+{
+    height:100%;    /*Główny słup*/
+    top:30%;
+}
+.sceleton:nth-child(3)::after,
+.sceleton:nth-child(4)::after
+{
+    border-right: transparent;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 10px;
+    right:var(--frame);
+    top:50%;
+}
+.sceleton:nth-child(4)::after
+{
+    height:45%;
+}
+
+/*Szkielet informacji oraz ikonek*/
+.frame
+{
+    position:absolute;
+    width:421.5px;
+    height:300px;
+    background:transparent;
+}
+.sceleton:first-child .frame
+{
+
+    top:15%
+}
+.sceleton:nth-child(3) .frame
+{
+    top:25%;
+}
+.sceleton:nth-child(4) .frame
+{
+    bottom: 22px;
+    height:218px;
+}
+
+/*Ikonki*/
+.icon
+{
+    position:relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:50px;
+    width: 50px;
+    background:red;
+    border-radius:50%;
+    top:  calc(-25px + var(--frame));
+    left:-30px;
+    z-index:1;
+}
+
+.sceleton:nth-child(3) .frame .icon,
+.sceleton:nth-child(4) .frame .icon
+{
+    left:calc(100% - 30px);
+}
+
+.fa
+{
+    transform: scale(1.3);
+}
+
+/*Tabliczki, Informacje, treść*/
+.back-info
+{
+    position: relative;
+    box-sizing: border-box;
+    height:60%;
+    width: 75%;
+    top:-10%;
+    left: 10%;
+    background: rgba(0,0,0,0.72);
+    border-radius:5px;
+}
+
+.back-info::before
+{
+    content: "";
+    display: block;
     position: absolute;
-    height:14.5px;
-    width:200px;
-    top:-14px;
-    left:75px;
-    border-left:6px solid deepskyblue;
-    border-right:6px solid deepskyblue;
+    height:10%;
+    width:70%;
+    left:15%;
+    top:-10%;
+    border-right: var(--frame) solid black;
+    border-left: var(--frame) solid black;
+}
+
+.sceleton:nth-child(4) .frame .back-info::before
+{
+    height:22%;
+    top:-22%;
+}
+
+.info
+{
+    position: absolute;
+    box-sizing: border-box;
+    width:100%;
+    height:100%;
+    padding:5px 10px;
+    color:white;
+    font-size:20px;
+    overflow: hidden;
 }
