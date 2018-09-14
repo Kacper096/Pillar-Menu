@@ -301,3 +301,23 @@ section.Welcome span h1
     padding:auto;
 }
 
+footer
+{
+    position: absolute;
+    top:0;
+    right:0;
+    margin:0;
+    padding: 0;
+    width:15vmax;
+    height:2vmin;
+}
+footer a
+{
+    position: absolute;
+    text-decoration: none;
+    margin:0;
+    padding:0;
+    color:grey;
+    font-size:1vh;
+    text-align: center;
+}
