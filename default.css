@@ -251,10 +251,10 @@ section.Welcome span::before
     content: "";
     display: block;
     position: absolute;
-    height:28%;
+    height:30px;
     width:70%;
     left:12.5%;
-    top:-28%;
+    top:-30px;
     border-right: var(--frame) solid rgba(3,0,0,0.6);
     border-left: var(--frame) solid rgba(3,0,0,0.6);
 }
@@ -291,7 +291,7 @@ section.Welcome span
     padding:20px 5px;
     text-align: center;
     font-size:4vmin;
-    font-family: 'Cabin Sketch' !important;
+    font-family: 'Cabin Sketch', cursive !important;
     font-weight: bolder;
     font-style: italic;
 }
